@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +14,7 @@
         }
 
         body {
-            background: url('https://imgur.la/images/2024/11/27/9D46C069B840AC53C7338EB740FE5313.jpg') no-repeat center center fixed;
+            background: url('https://imgur.la/images/2024/12/11/A38DFE2B998D7FDA3F0157370C84D6B3.jpg') no-repeat center center fixed;
             background-size: cover;
             height: 100vh;
             overflow: hidden;
@@ -31,13 +32,19 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 20px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.7);
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 60px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            color: #4FE1A0;
         }
 
         .nav {
@@ -49,36 +56,43 @@
             margin: 0 15px;
             color: #fff;
             text-decoration: none;
-            transition: transform 0.3s, color 0.3s;
+            transition: transform 0.3s, background 0.3s;
             padding: 10px 20px;
             border-radius: 5px;
             background: rgba(255, 255, 255, 0.2);
-            position: relative;
-            display: flex;
-            align-items: center;
         }
 
         .nav-link:hover {
             transform: scale(1.1);
-            color: #4A90E2;
+            background: rgba(255, 255, 255, 0.3);
         }
 
-        .nav-link i {
-            margin-right: 5px;
-            color: #4A90E2;
+        .dropdown {
+            position: relative;
         }
 
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(0, 0, 0, 0.8);
             min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
             z-index: 1;
         }
 
         .dropdown:hover .dropdown-content {
             display: block;
+        }
+
+        .dropdown-content a {
+            padding: 10px;
+            color: #fff;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .search-box {
@@ -103,52 +117,33 @@
 
         .content {
             margin-top: 80px;
-            color: #fff;
             max-width: 800px;
             padding: 0 20px;
             line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
 
-        .video-btn {
-            position: absolute;
-            top: 90px; /* 调整按钮位置到左上角，降低边框 */
-            left: 20px; /* 调整按钮位置到最左边 */
-            padding: 10px 20px;
+        .data-btn {
+            padding: 15px 30px;
             border: none;
             border-radius: 5px;
-            background: rgba(0, 0, 0, 0.5); /* 调整按钮颜色 */
+            background: rgba(79, 225, 160, 0.8);
             color: #fff;
             cursor: pointer;
-            font-size: 1.2em;
+            font-size: 1.5em;
+            transition: background 0.3s, transform 0.3s;
         }
 
-        .video-btn:hover {
-            background: rgba(0, 0, 0, 0.7); /* 调整按钮悬停颜色 */
-        }
-
-        #video-container {
-            display: none;
-            width: 970px;
-            height: 542.5px;
-            margin-top: 20px;
-            position: relative;
-            left: 50%; /* 将视频容器置于中间 */
-            transform: translateX(-50%);
-        }
-
-        .exit-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            padding: 5px 10px;
-            cursor: pointer;
+        .data-btn:hover {
+            background: rgba(79, 225, 160, 1);
+            transform: scale(1.1);
         }
     </style>
 </head>
+
 <body>
     <div class="header">
         <div class="logo">智慧农业管理系统</div>
@@ -171,29 +166,9 @@
         </div>
     </div>
     <div class="content">
-        <!-- 更新按钮文本和样式 -->
-        <button class="video-btn" onclick="showVideo()">数据事例1</button>
-        <!-- 更新视频源 -->
-        <div id="video-container">
-            <video poster="https://play.1001b.cn/b110605dvodtranscq1257837729/5ef49ad71397757899047550930/coverBySnapshot/coverBySnapshot_20134_0.jpg" width="970" src="https://1001b.cn/chronus/url/v1/getVideoUrl/78d671362e6c41c7a08257e4fbbfadfc" controls></video>
-            <button class="exit-btn" onclick="hideVideo()">退出</button>
-        </div>
+        <!-- 添加一个新的按钮来打开 volume rendering -->
+        <button class="data-btn" onclick="window.open('./output_frames/index3.html', '_blank', 'opener=yes')">数据分析</button>
     </div>
-
-    <script>
-        function showVideo() {
-            var videoContainer = document.getElementById('video-container');
-            videoContainer.style.display = 'block';
-            var video = videoContainer.getElementsByTagName('video')[0];
-            video.play();
-        }
-
-        function hideVideo() {
-            var videoContainer = document.getElementById('video-container');
-            videoContainer.style.display = 'none';
-            var video = videoContainer.getElementsByTagName('video')[0];
-            video.pause();
-        }
-    </script>
 </body>
+
 </html>

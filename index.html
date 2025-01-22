@@ -14,21 +14,28 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: Arial, sans-serif; /* 设置默认字体 */
+      font-family: Arial, sans-serif;
     }
 
     #login_box {
       width: 20%;
       height: auto;
-      background-color: #00000060;
+      background-color: rgba(0, 0, 0, 0.7);
       border-radius: 10px;
       padding: 50px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
       text-align: center;
     }
 
+    h1 {
+      color: #30cfd0;
+      font-size: 24px;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
     h2 {
-      color: #fff; /* 设置标题颜色为白色 */
+      color: #fff;
       margin-bottom: 20px;
     }
 
@@ -36,16 +43,21 @@
       border: 0;
       width: 100%;
       font-size: 15px;
-      color: #fff; /* 设置输入框文本颜色为白色 */
+      color: #fff;
       background: transparent;
       border-bottom: 2px solid #fff;
       padding: 5px 10px;
       margin-top: 10px;
+      transition: border-color 0.3s;
     }
 
-    /* 特别为placeholder文本设置样式 */
+    input:focus {
+      outline: none;
+      border-bottom: 2px solid #30cfd0;
+    }
+
     input::placeholder {
-      color: #fff; /* 设置placeholder文本颜色为白色 */
+      color: #fff;
     }
 
     button {
@@ -57,6 +69,12 @@
       color: #fff;
       background-image: linear-gradient(to right, #30cfd0, #330867);
       cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-image: linear-gradient(to right, #330867, #30cfd0);
     }
 
     .register-link {
@@ -73,9 +91,10 @@
 
 <body>
   <div id="login_box">
+    <h1>智慧农业管理系统</h1>
     <h2>LOGIN</h2>
     <input type="text" id="username" placeholder="请输入用户名">
-    <input type="password" id="password" placeholder="请输入密码">
+    <input type="password" id="password" placeholder="请输入密码" onkeypress="checkEnter(event)">
     <button onclick="validateLogin()">登录</button>
     <div class="register-link" onclick="window.location.href='register.html'">没有账号？立即注册</div>
   </div>
@@ -92,6 +111,12 @@
         window.location.href = 'index1.html'; // 跳转到应用界面
       } else {
         alert('用户名或密码错误！');
+      }
+    }
+
+    function checkEnter(event) {
+      if (event.key === 'Enter') {
+        validateLogin(); // Call the login function when Enter key is pressed
       }
     }
   </script>
